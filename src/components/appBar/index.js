@@ -1,0 +1,46 @@
+import React, { useState, useEffect } from 'react'
+import { StatusBar, SafeAreaView, TouchableOpacity } from 'react-native'
+import { View, Text, Box, HStack, Icon, Badge, VStack } from 'native-base'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import Ionicons from 'react-native-vector-icons/Ionicons'
+
+import { navigate, goBack } from '../../utils/navigation'
+import { FAMILY, COLOR, SIZE } from '../../theme/typography'
+import styles from './styles'
+
+const renderAppbarStyle0 = (props) => {
+    return (
+        <HStack flex={1} alignItems={'center'} pl={4} pr={4} justifyContent={'space-between'} >
+            <HStack alignItems={'center'} p={1} >
+                <View style={styles.actionBarLeft} flex={4} >
+                    <TouchableOpacity activeOpacity={0.9} onPress={props.onClickBack} >
+                        <HStack alignItems={'center'} >
+                            <Icon as={<Ionicons name='ios-chevron-back-outline' />} color={'#FFFF'} size={'2xl'} />
+                            <Text color={'#FFFF'} fontWeight={'400'} fontSize={'lg'} >{'ย้อนกลับ'}</Text>
+                        </HStack>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.actionBarCenter} flex={4}  >
+                    <Text color={'#FFFF'} fontWeight={'400'} fontSize={'lg'} >{props.textTitle}</Text>
+                </View>
+                <View style={styles.actionBarRight} flex={4}  >
+
+                </View>
+            </HStack>
+        </HStack>
+    );
+}
+
+const Appbar = (props) => {
+    return (
+        <View style={props.isStyleTransparent == true ? styles.appBarTransparent : styles.appBar} >
+            {
+                props.isStyleAppBar == 0 ? renderAppbarStyle0(props)
+                    : <></>
+            }
+        </View>
+    )
+}
+
+export default Appbar
