@@ -15,7 +15,7 @@ export const navigateReset = (routeName, params = []) => {
   args = [{ name: routeName, params }];
 
   navigationRef.current?.dispatch(state => {
-    const routes = state.routes.filter(r => r.name !== 'Home');
+    const routes = state.routes.filter(r => r.name !== 'LoginScreen');
     return CommonActions.reset({
       routes: args,
       index: 1,

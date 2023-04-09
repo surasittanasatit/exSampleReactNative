@@ -4,7 +4,7 @@ import {
 } from '../utils/constants';
 
 export const initialState = {
-    urlServices: 'http://192.168.2.39:12500/api/nodeapi/',
+    urlServices: 'http://192.168.1.102:12500/api/nodeapi/',
 
 };
 

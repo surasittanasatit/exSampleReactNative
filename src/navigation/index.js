@@ -5,6 +5,7 @@ import { createStackNavigator, CardStyleInterpolators } from '@react-navigation/
 import { navigationRef } from '../utils/navigation'
 
 import LoginScreen from '../screens/loginScreen';
+import RegisterScreen from '../screens/registerScreen';
 
 const Stack = createStackNavigator();
 const options = {
@@ -18,6 +19,7 @@ const NavigationController = () => {
         <NavigationContainer ref={navigationRef}>
             <Stack.Navigator initialRouteName='LoginScreen' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='LoginScreen' component={LoginScreen} options={options} />
+                <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={options} />
             </Stack.Navigator>
         </NavigationContainer>
     )

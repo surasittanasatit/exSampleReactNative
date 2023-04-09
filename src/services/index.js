@@ -32,17 +32,15 @@ const test_connect_service = (hostUrl) => {
 const register = (hostUrl, objItem) => {
     let param =
     {
-        "data": {
-            "userId": objItem.userId,
-            "password": objItem.password,
-            "fristName": objItem.fristName,
-            "lastName": objItem.lastName,
-            "deviceId": objItem.deviceId,
-            "apiToken": objItem.apiToken,
-            "fcmToken": objItem.fcmToken,
-            "createDt": objItem.createDt,
-            "updateDt": objItem.updateDt,
-        },
+        "userId": objItem.userId,
+        "password": objItem.password,
+        "fristName": objItem.fristName,
+        "lastName": objItem.lastName,
+        "deviceId": objItem.deviceId,
+        "apiToken": objItem.apiToken,
+        "fcmToken": objItem.fcmToken,
+        "createDt": objItem.createDt,
+        "updateDt": objItem.updateDt,
     };
     return new Promise(async (resolve, reject) => {
         let result = { data: null, error: '', status: false, };

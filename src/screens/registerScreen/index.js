@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { View, Text, BackHandler, ImageBackground, Image, TextInput, TouchableOpacity, Keyboard } from 'react-native'
+import { View, Text, BackHandler, ImageBackground, Image, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native'
 import { Box, Icon } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -7,23 +7,25 @@ import Feather from 'react-native-vector-icons/Feather'
 import { AppContext } from '../../context/appContext';
 import useDidMount from '../../helper/useDidMount'
 import BoxView from '../../components/boxView'
+import Appbar from '../../components/appBar'
 
-import { TestConnectService } from '../../action/loginAction';
+import { registerNewUser } from '../../action/registerAction';
 import { navigate, goBack, navigateReset } from '../../utils/navigation';
 import { COLOR, FAMILY, SIZE } from '../../theme/typography'
 import theme from '../../theme/styles'
 import styles from './styles';
 
-const LoginScreen = () => {
+const RegisterScreen = () => {
     const didMount = useDidMount();
     const { props, dispatch } = useContext(AppContext);
 
-    const [userName, setUserName] = useState('');
+    const [firstname, setFirstName] = useState('');
+    const [lastname, setLastName] = useState('');
+    const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
 
     const init = async () => {
-        let rsTestConnectService = await TestConnectService(props.urlServices);
-        console.log(rsTestConnectService);
+
     };
 
     useEffect(() => {
@@ -37,27 +39,53 @@ const LoginScreen = () => {
         return () => backHandler.remove();
     }, []);
 
-    const onClickHandler = async () => {
-        Keyboard.dismiss();
-        console.log('Login Action :', userName, password);
-    }
 
-    const onClickRegisterHandler = async () => {
+    const onClickSaveHandler = async () => {
         Keyboard.dismiss();
-        navigate('RegisterScreen');
+        let rsRegister = await registerNewUser(props.urlServices,
+            username,
+            password,
+            firstname,
+            lastname);
+        if (rsRegister.data.status == true) {
+            Alert.alert('Alert', rsRegister.data.result, [
+                { text: 'OK', onPress: () => goBack() },
+            ]);
+        } else {
+            Alert.alert('Alert error', rsRegister.data);
+        }
     }
 
     return (
         <BoxView lockscreen={true}>
             <ImageBackground source={require('@asset/images/bg_main.png')} imageStyle='cover' style={styles.bgCover}>
+                <Appbar
+                    isStyleAppBar={0}
+                    onClickBack={() => { goBack() }}
+                    textTitle={'Register User'}
+                />
                 <View style={styles.section}>
-                    <View style={styles.logo}>
-                        <Image source={require('@asset/images/logo.png')} />
-                    </View>
                     <View style={styles.signBg}>
                         <View style={theme.row}>
                             <TextInput
-                                value={userName}
+                                value={firstname}
+                                style={styles.textInput}
+                                onChangeText={(text) => { setFirstName(text) }}
+                                placeholder={'First Name'} />
+                        </View>
+                        <View style={theme.row}>
+                            <TextInput
+                                value={lastname}
+                                style={styles.textInput}
+                                onChangeText={(text) => { setLastName(text) }}
+                                placeholder={'Last Name'} />
+                        </View>
+                    </View>
+
+                    <View style={[styles.signBg, { marginTop: 5 }]}>
+                        <View style={theme.row}>
+                            <TextInput
+                                value={username}
                                 style={styles.textInput}
                                 onChangeText={(text) => { setUserName(text) }}
                                 placeholder={'Username'} />
@@ -70,15 +98,11 @@ const LoginScreen = () => {
                                 secureTextEntry={true}
                                 placeholder={'Password'} />
                         </View>
-                        <TouchableOpacity
-                            style={styles.btn} onPress={() => { onClickHandler() }}>
-                            <Text style={styles.loginBtnText}>{'SignIn'}</Text>
-                            <Icon as={<MaterialCommunityIcons />} name="arrow-right" color={'#FFFFFF'} size={'md'} />
-                        </TouchableOpacity>
                     </View>
+
                     <TouchableOpacity
-                        style={styles.btn2} onPress={() => { onClickRegisterHandler() }}>
-                        <Text style={styles.loginBtnText}>{'Register'}</Text>
+                        style={styles.btn2} onPress={() => { onClickSaveHandler() }}>
+                        <Text style={styles.loginBtnText}>{'Save'}</Text>
                         <Icon as={<Feather />} name="user-plus" color={'#FFFFFF'} size={'md'} />
                     </TouchableOpacity>
                 </View>
@@ -87,4 +111,4 @@ const LoginScreen = () => {
     )
 }
 
-export default LoginScreen
+export default RegisterScreen

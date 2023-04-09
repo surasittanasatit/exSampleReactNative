@@ -11,13 +11,13 @@ import styles from './styles'
 
 const renderAppbarStyle0 = (props) => {
     return (
-        <HStack flex={1} alignItems={'center'} pl={4} pr={4} justifyContent={'space-between'} >
+        <HStack flex={1} alignItems={'center'} pl={2} pr={2} justifyContent={'space-between'} >
             <HStack alignItems={'center'} p={1} >
                 <View style={styles.actionBarLeft} flex={4} >
                     <TouchableOpacity activeOpacity={0.9} onPress={props.onClickBack} >
                         <HStack alignItems={'center'} >
-                            <Icon as={<Ionicons name='ios-chevron-back-outline' />} color={'#FFFF'} size={'2xl'} />
-                            <Text color={'#FFFF'} fontWeight={'400'} fontSize={'lg'} >{'ย้อนกลับ'}</Text>
+                            <Icon as={<Ionicons name='ios-chevron-back-outline' />} color={'#FFFF'} size={'xl'} />
+                            <Text color={'#FFFF'} fontWeight={'400'} fontSize={'md'} >{props.textBack}</Text>
                         </HStack>
                     </TouchableOpacity>
                 </View>
