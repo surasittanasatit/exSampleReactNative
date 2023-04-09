@@ -7,7 +7,7 @@
     -			},
     +			ios: {},
 4.run 
-    npx patch-package react-native-sqlite-storage 
+    npx patch-package react-native
 at terminal
 5.patch-package makes react-native-sqlite-storage+6.0.1.patch and add it to {$root}/patches
 6.build your project!

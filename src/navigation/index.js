@@ -6,6 +6,9 @@ import { navigationRef } from '../utils/navigation'
 
 import LoginScreen from '../screens/loginScreen';
 import RegisterScreen from '../screens/registerScreen';
+import HomeScreen from '../screens/homeScreen';
+
+import Camera from '../screens/camera';
 
 const Stack = createStackNavigator();
 const options = {
@@ -20,6 +23,8 @@ const NavigationController = () => {
             <Stack.Navigator initialRouteName='LoginScreen' screenOptions={{ headerShown: false }}>
                 <Stack.Screen name='LoginScreen' component={LoginScreen} options={options} />
                 <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={options} />
+                <Stack.Screen name='HomeScreen' component={HomeScreen} options={options} />
+                <Stack.Screen name='Camera' component={Camera} options={options} />
             </Stack.Navigator>
         </NavigationContainer>
     )

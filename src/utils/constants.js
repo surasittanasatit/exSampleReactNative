@@ -1,2 +1,4 @@
 export const RESET_ACTION = 'RESET_ACTION';
 export const ACTION_CONFIG_SERVICE_URL = 'ACTION_CONFIG_SERVICE_URL';
+
+export const USER_DATA = 'USER_DATA';

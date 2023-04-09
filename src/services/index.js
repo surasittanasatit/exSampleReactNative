@@ -2,6 +2,7 @@ import axios from 'axios'
 import {
     TEST_CONNECT_SERVICE,
     REGISTER,
+    LOGIN
 } from '../utils/servicenames'
 
 axios.defaults.timeout = 20000;
@@ -65,7 +66,36 @@ const register = (hostUrl, objItem) => {
     });
 }
 
+const login = (hostUrl, userId, password) => {
+    let param = {
+        "userId": userId,
+        "password": password,
+    }
+    return new Promise(async (resolve, reject) => {
+        let result = { data: null, error: '', status: false, };
+        return axios({
+            method: 'POST',
+            url: hostUrl + LOGIN,
+            responseType: 'json',
+            data: param,
+        }).then(function (response) {
+            result.data = response.data.data;
+            result.status = true;
+            resolve(result);
+        }).catch(function (error) {
+            console.log('test_connect_service', error);
+            if (error.toJSON().message == "timeout of 20000ms exceeded") {
+                result.error = { error: 'Network Error', status: 'Service connection timed out' }
+            } else {
+                result.error = error.toJSON().message
+            }
+            reject(result);
+        });
+    });
+}
+
 export default {
     test_connect_service,
     register,
+    login,
 };

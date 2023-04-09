@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { View, Text, BackHandler, ImageBackground, Image, TextInput, TouchableOpacity, Keyboard } from 'react-native'
+import { View, Text, BackHandler, ImageBackground, Image, TextInput, TouchableOpacity, Keyboard, Alert } from 'react-native'
 import { Box, Icon } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
@@ -8,7 +8,9 @@ import { AppContext } from '../../context/appContext';
 import useDidMount from '../../helper/useDidMount'
 import BoxView from '../../components/boxView'
 
-import { TestConnectService } from '../../action/loginAction';
+import { TestConnectService, Login } from '../../action/loginAction';
+import { USER_DATA } from '../../utils/constants'
+
 import { navigate, goBack, navigateReset } from '../../utils/navigation';
 import { COLOR, FAMILY, SIZE } from '../../theme/typography'
 import theme from '../../theme/styles'
@@ -18,8 +20,8 @@ const LoginScreen = () => {
     const didMount = useDidMount();
     const { props, dispatch } = useContext(AppContext);
 
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState('user03');
+    const [password, setPassword] = useState('1234');
 
     const init = async () => {
         let rsTestConnectService = await TestConnectService(props.urlServices);
@@ -39,7 +41,14 @@ const LoginScreen = () => {
 
     const onClickHandler = async () => {
         Keyboard.dismiss();
-        console.log('Login Action :', userName, password);
+        // console.log('Login Action :', userName, password);
+        let rsLogin = await Login(props.urlServices, userName, password);
+        if (rsLogin.status == true) {
+            dispatch({ type: USER_DATA, payload: rsLogin.data });
+            navigate('HomeScreen');
+        } else {
+            Alert.alert('Alert', rsLogin.error);
+        }
     }
 
     const onClickRegisterHandler = async () => {

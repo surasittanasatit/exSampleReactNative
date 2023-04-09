@@ -13,7 +13,7 @@ export const registerNewUser = async (url, username, password, fristName, lastNa
         "createDt": moment(new Date).format('YYYYMMDD HHmmss'),
         "updateDt": '',
     };
-    console.log(data);
+
     let result = await Services.register(url, data).then(rs => {
         return rs;
     }).catch(err => {

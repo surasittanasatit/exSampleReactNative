@@ -35,8 +35,42 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>Application needs your apple music</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>Application needs your bluetooth</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Application needs your bluetooth</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Application need calendar for displaying your daily appointments and show total appointments current day.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Application needs your camera for task document photos for send to operator</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Application needs your contacts for send job to support team</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>$(PRODUCT_NAME) Requires FaceID access to allows you quick and secure access.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Application needs your location for add current location and add marker in map and send location marker to operator</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Application needs your location for add current location and add marker in map and send location marker to operator</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Application needs your location for add current location and add marker in map and send location marker to operator</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string>Application needs your location for add current location and add marker in map and send location marker to operator</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Application needs your microphone for record audio in video send to operator</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Application needs your motion</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Application needs your photo library for save camera photo document and uploading pictures from the album to the application for send images to operator</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Application needs your photo library for save camera photo document and uploading pictures from the album to the application for send images to operator</string>
+	<key>NSSiriUsageDescription</key>
+	<string>Application needs your siri</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>Application needs your speech recognition</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Application needs tracking location to function on map</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>

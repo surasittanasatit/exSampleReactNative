@@ -9,3 +9,12 @@ export const TestConnectService = async (url) => {
     });
     return result;
 }
+
+export const Login = async (url, username, password) => {
+    let result = await Services.login(url, username, password).then(rs => {
+        return rs;
+    }).catch(err => {
+        return err
+    });
+    return result;
+}
