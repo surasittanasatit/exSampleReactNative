@@ -25,7 +25,7 @@ const BoxView = ({ children, lockscreen }) => {
                 lock={lockscreen ? lockscreen : false}
                 orientation={props.orientation}
                 backgroundColor={Platform.OS == 'ios' ? colorMode === 'dark' ? COLOR.bgDark : BGLightColor : '#000000'}
-                barStyle={Platform.OS == 'ios' ? colorMode === 'dark' ? 'light-content' : 'dark-content' : 'default'} />
+                barStyle={Platform.OS == 'ios' ? 'light-content' : 'default'} />
             {children}
         </Box>
     )

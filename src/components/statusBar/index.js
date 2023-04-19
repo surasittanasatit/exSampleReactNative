@@ -7,9 +7,10 @@ import { getStatusBarHeight } from '../../helper/iphoneCheck';
 
 export default function (props) {
     const height = (Platform.OS === 'ios') ? getStatusBarHeight() : 0;
-    
+
     return (
         <View style={{
+            backgroundColor: '#38405a',
             height: props.lock == true ? height :
                 props.orientation == 'PORTRAIT' ||
                     props.orientation == 'FACE-UP' ||

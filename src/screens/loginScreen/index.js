@@ -7,6 +7,7 @@ import Feather from 'react-native-vector-icons/Feather'
 import { AppContext } from '../../context/appContext';
 import useDidMount from '../../helper/useDidMount'
 import BoxView from '../../components/boxView'
+import { LineButton } from '../../components/lineButton'
 
 import { TestConnectService, Login } from '../../action/loginAction';
 import { USER_DATA } from '../../utils/constants'
@@ -30,7 +31,7 @@ const LoginScreen = () => {
 
     useEffect(() => {
         if (didMount) {
-            init();
+            //init();
         }
         const backAction = () => { return true };
         const backHandler = BackHandler.addEventListener(
@@ -91,6 +92,9 @@ const LoginScreen = () => {
                         <Icon as={<Feather />} name="user-plus" color={'#FFFFFF'} size={'md'} />
                     </TouchableOpacity>
                 </View>
+                <Box mt={4} justifyContent={'center'} alignItems={'center'} >
+                    <LineButton title={'Log in with LINE'} onPress={() => { }} />
+                </Box>
             </ImageBackground>
         </BoxView>
     )
