@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">exSampleApp</string>
+    <string name="line_channel_id" translatable="false">1660920878</string>
 </resources>

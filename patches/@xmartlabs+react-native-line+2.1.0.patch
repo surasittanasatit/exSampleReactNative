@@ -1,0 +1,10 @@
+diff --git a/node_modules/@xmartlabs/react-native-line/android/gradle.properties b/node_modules/@xmartlabs/react-native-line/android/gradle.properties
+index f772dd1..cb13d4b 100644
+--- a/node_modules/@xmartlabs/react-native-line/android/gradle.properties
++++ b/node_modules/@xmartlabs/react-native-line/android/gradle.properties
+@@ -1,4 +1,4 @@
+-ReactNativeLine_kotlinVersion=1.3.50
++ReactNativeLine_kotlinVersion=1.7.20
+ ReactNativeLine_compileSdkVersion=28
+ ReactNativeLine_buildToolsVersion=28.0.3
+ ReactNativeLine_targetSdkVersion=28

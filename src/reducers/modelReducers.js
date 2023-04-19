@@ -2,12 +2,15 @@ import {
     RESET_ACTION,
     ACTION_CONFIG_SERVICE_URL,
     USER_DATA,
+    AUTH_LINE_ERROR,
+    AUTH_LINE_SUCCESS,
 } from '../utils/constants';
 
 export const initialState = {
     urlServices: 'http://192.168.1.102:12500/api/nodeapi/',
     userdata: [],
-
+    error: '',
+    lineloginresult: null,
 };
 
 export const reducers = (state = initialState, action) => {
@@ -18,6 +21,10 @@ export const reducers = (state = initialState, action) => {
             return { ...state, urlServices: action.payload };
         case USER_DATA:
             return { ...state, userdata: action.payload };
+        case AUTH_LINE_ERROR:
+            return { ...state, error: action.payload };
+        case AUTH_LINE_SUCCESS:
+            return { ...state, lineloginresult: action.payload };
         default:
             return state;
     }

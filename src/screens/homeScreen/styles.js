@@ -15,7 +15,9 @@ export default {
         paddingTop: 10
     },
     avatar: {
-        marginRight: SIZE.tiny
+        marginRight: SIZE.tiny,
+        width: 120,
+        height: 120,
     },
     profileName: {
         fontFamily: FAMILY.regular,

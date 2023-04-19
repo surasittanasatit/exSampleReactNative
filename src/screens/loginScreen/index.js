@@ -9,7 +9,7 @@ import useDidMount from '../../helper/useDidMount'
 import BoxView from '../../components/boxView'
 import { LineButton } from '../../components/lineButton'
 
-import { TestConnectService, Login } from '../../action/loginAction';
+import { TestConnectService, Login, LineLoginResult } from '../../action/loginAction';
 import { USER_DATA } from '../../utils/constants'
 
 import { navigate, goBack, navigateReset } from '../../utils/navigation';
@@ -93,7 +93,7 @@ const LoginScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <Box mt={4} justifyContent={'center'} alignItems={'center'} >
-                    <LineButton title={'Log in with LINE'} onPress={() => { }} />
+                    <LineButton title={'Log in with LINE'} onPress={() => { LineLoginResult(dispatch, navigate, Alert) }} />
                 </Box>
             </ImageBackground>
         </BoxView>

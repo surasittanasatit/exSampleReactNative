@@ -3,6 +3,7 @@ import { View, Text, BackHandler, ImageBackground, Image, TextInput, TouchableOp
 import { Box, Icon } from 'native-base';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import Feather from 'react-native-vector-icons/Feather'
+import Line from '@xmartlabs/react-native-line'
 
 import { AppContext } from '../../context/appContext';
 import useDidMount from '../../helper/useDidMount'
@@ -19,6 +20,7 @@ const HomeScreen = () => {
     const didMount = useDidMount();
     const { props, dispatch } = useContext(AppContext);
 
+    const [userdata] = useState(props.lineloginresult)
     const [userId, setUserID] = useState('')
     const [fullName, setFullName] = useState('')
 
@@ -27,32 +29,38 @@ const HomeScreen = () => {
         if (checkPermissions != true) {
             await requestPermissionsAccept();
         }
-
-        let userobj = props.userdata[0];
-        setUserID(userobj.userId);
-        setFullName(userobj.fristName + ' ' + userobj.lastName);
+        console.log(userdata);
+        // let userobj = props.userdata[0];
+        // setUserID(userobj.userId);
+        // setFullName(userobj.fristName + ' ' + userobj.lastName);
     }
 
     useEffect(() => {
-        if (didMount) {
-            init();
-        }
+        // if (didMount) {
+        //     init();
+        // }
+        init();
     }, [])
+
+    const onLogoutHandler = async () => {
+        // await Line.logout()
+        navigateReset('LoginScreen')
+    }
 
     return (
         <BoxView lockscreen={true}>
             <Appbar
                 isStyleAppBar={1}
                 textTitle={'Home'}
-                onClickLogout={() => { navigateReset('LoginScreen') }}
+                onClickLogout={() => { onLogoutHandler() }}
             />
             <View style={styles.memberContainer}>
                 <ImageBackground source={require('@asset/images/bg_main.png')} imageStyle='cover' style={styles.curveImg} >
                     <View style={styles.profile}>
-                        <Image source={require('@asset/images/avatar.png')} style={styles.avatar} />
+                        <Image source={{ uri: userdata.userProfile.pictureURL }} resizeMode='cover' style={styles.avatar} />
                         <View style={{ marginLeft: 5 }} >
-                            <Text style={styles.profileName}>{userId}</Text>
-                            <Text style={styles.profileLocation}>{fullName}</Text>
+                            <Text style={styles.profileName}>{userdata.userProfile.displayName}</Text>
+                            {/* <Text style={styles.profileLocation}>{fullName}</Text> */}
                         </View>
                     </View>
                     <View style={styles.btnLayout}>

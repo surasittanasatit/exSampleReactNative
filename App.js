@@ -6,11 +6,11 @@ import { AppContextProvider } from './src/context/appContext';
 
 const App = () => {
   return (
-    <NativeBaseProvider>
-      <AppContextProvider>
-        <NavigationController />
-      </AppContextProvider>
-    </NativeBaseProvider>
+      <NativeBaseProvider>
+        <AppContextProvider>
+          <NavigationController />
+        </AppContextProvider>
+      </NativeBaseProvider>
   )
 }
 
