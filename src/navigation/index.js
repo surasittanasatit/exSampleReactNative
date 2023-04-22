@@ -7,7 +7,8 @@ import LoginScreen from '../screens/loginScreen';
 import RegisterScreen from '../screens/registerScreen';
 import HomeScreen from '../screens/homeScreen';
 
-import Camera from '../screens/camera';
+import Camera from '../screens/cameraScreen';
+import QrCodeScreen from '../screens/qrcodeScreen';
 
 const Stack = createStackNavigator();
 const options = {
@@ -18,14 +19,15 @@ const options = {
 
 const NavigationController = () => {
     return (
-            <NavigationContainer ref={navigationRef}>
-                <Stack.Navigator initialRouteName='LoginScreen' screenOptions={{ headerShown: false }}>
-                    <Stack.Screen name='LoginScreen' component={LoginScreen} options={options} />
-                    <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={options} />
-                    <Stack.Screen name='HomeScreen' component={HomeScreen} options={options} />
-                    <Stack.Screen name='Camera' component={Camera} options={options} />
-                </Stack.Navigator>
-            </NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
+            <Stack.Navigator initialRouteName='LoginScreen' screenOptions={{ headerShown: false }}>
+                <Stack.Screen name='LoginScreen' component={LoginScreen} options={options} />
+                <Stack.Screen name='RegisterScreen' component={RegisterScreen} options={options} />
+                <Stack.Screen name='HomeScreen' component={HomeScreen} options={options} />
+                <Stack.Screen name='Camera' component={Camera} options={options} />
+                <Stack.Screen name='QrCodeScreen' component={QrCodeScreen} options={options} />
+            </Stack.Navigator>
+        </NavigationContainer>
     )
 }
 

@@ -11,7 +11,7 @@ export default function (props) {
     return (
         <View style={{
             backgroundColor: '#38405a',
-            height: props.lock == true ? height :
+            height: props.lock == true ? 2 * height :
                 props.orientation == 'PORTRAIT' ||
                     props.orientation == 'FACE-UP' ||
                     props.orientation == 'PORTRAIT-UPSIDEDOWN' ?

@@ -1,5 +1,5 @@
 
-import { COLOR, FAMILY, SIZE } from '@theme/typography'
+import { COLOR, FAMILY, SIZE } from '../../theme/typography'
 
 const React = require("react-native");
 const { Platform } = React;
@@ -21,14 +21,15 @@ export default {
     },
     profileName: {
         fontFamily: FAMILY.regular,
-        fontSize: SIZE.compact,
+        fontSize: SIZE.SIZE16,
         color: '#FFF',
         marginBottom: 3,
-        marginTop: 15
+        marginTop: 15,
+        marginLeft: 10
     },
     profileLocation: {
         fontFamily: FAMILY.regular,
-        fontSize: SIZE.small,
+        fontSize: SIZE.SIZE16,
         color: '#FFF',
         opacity: 0.7
     },
